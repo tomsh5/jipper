@@ -32,13 +32,22 @@ export function ProductReducer(state = INITIAL_STATE, action) {
                 products: state.products.map(product => product._id === action.product._id ? action.product : product)
             }
 
-            case 'ADD_CART':
-                console.log(action.product);
-                console.log(state.cartProducts);
+        case 'ADD_CART':
+            console.log(action.product);
+            console.log(state.cartProducts);
+            if (state.cartProducts) {
                 return {
-                ...state,
-                cartProducts: [state.cartProducts, action.product]
+                    ...state,
+                    cartProducts: [state.cartProducts, action.product]
+                }
             }
+            else {
+                return {
+                    ...state,
+                    cartProducts: [action.product]
+                }
+            }
+
 
         default:
             return state

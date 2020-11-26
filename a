@@ -1,0 +1,11 @@
+[33mcommit 3e278362770f41cbef0e96b3611a0857e69a739d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: tomsh5 <tomsh5@gmail.com>
+Date:   Thu Nov 26 12:34:42 2020 +0200
+
+    first commit
+
+[33mcommit 29a50915c5c51c2f9f9dd7524869d3b3db41aa8f[m
+Author: Tom Shalem <tomsh5@gmail.com>
+Date:   Sun Aug 16 15:23:04 2020 +0300
+
+    Initialize project using Create React App

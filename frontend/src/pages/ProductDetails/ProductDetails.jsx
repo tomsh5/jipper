@@ -51,7 +51,7 @@ export class _ProductDetails extends Component {
     OnAddToCart = (ev) => {
         // const productToCart = this.state.productToCart
         this.props.addToCart(this.state.productToCart)
-        console.log(this.state.productToCart);
+        // console.log(this.state.productToCart);
     }
 
     render() {
