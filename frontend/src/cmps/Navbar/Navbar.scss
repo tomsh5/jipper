@@ -1,0 +1,26 @@
+.navbar{
+    border-bottom: gray 1px solid;
+    li{
+        margin-left: 10px;
+    }
+
+    ul{
+        margin-right: 20px;
+        list-style-type: none;
+    }
+
+    h2{
+        margin-left: 20px;  
+    }
+
+    a{
+        text-decoration: none;
+        color: rgb(88, 82, 82);
+        font-weight: bold;
+
+        &:hover{
+            color: rgb(126, 117, 117);
+        }
+    }
+
+}

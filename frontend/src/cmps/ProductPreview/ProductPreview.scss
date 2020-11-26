@@ -1,0 +1,19 @@
+.product-preview{
+    // border: 1px rgb(167, 148, 148) solid;
+    border-radius: 0.3rem;
+    width: 250px;
+    height: 300px;
+    // margin-bottom: 10px;
+    // margin-right: 10px;
+    padding: 10px;
+
+    img{
+        border: darkgray 2px solid;
+        // margin-right: 10px;;
+    }
+
+    a{
+        text-decoration: none;
+        color: rgb(88, 82, 82);
+    }
+}
