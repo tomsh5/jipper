@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addToCart } from '../../actions/ProductActions'
+import { loadOrder, addToOrder } from '../../actions/OrderActions'
 import { productService } from '../../services/productService.js'
+import { orderService } from '../../services/orderService.js'
 import './ProductDetails.scss'
 import { Link } from 'react-router-dom'
 
@@ -9,7 +10,8 @@ import { Link } from 'react-router-dom'
 export class _ProductDetails extends Component {
     state = {
         product: null,
-        productToCart: null
+        productToCart: null,
+        order: null
     }
 
 
@@ -48,17 +50,23 @@ export class _ProductDetails extends Component {
         console.log(this.state.productToCart);
     }
 
-    OnAddToCart = (ev) => {
-        // const productToCart = this.state.productToCart
-        this.props.addToCart(this.state.productToCart)
-        // console.log(this.state.productToCart);
-    }
+    // OnAddToCart = (ev) => {
+    //     // const productToCart = this.state.productToCart
+    //     this.props.addToCart(this.state.productToCart)
+    //     // console.log(this.state.productToCart);
+    // }
 
+  onAddToOrder = () => {
+        orderService.addItemtoCart(this.state.productToCart)
+        // const productToOrder = this.state.productToCart
+        // this.props.addToOrder()
+    }
+    
     render() {
         if (!this.state.product) return <div>Loading...</div>
-        const { name, price, details } = this.state.product
-        const sizes = details.size.map((size) => <option key={size}>{size}</option>);
-        const colors = details.color.map((color) => <option value={color} key={color}>{color}</option>);
+        const { name, price, size, color, imgs } = this.state.product
+        const sizes = size.map((size) => <option key={size}>{size}</option>);
+        const colors = color.map((color) => <option value={color} key={color}>{color}</option>);
         return (
             <div className="product-details main-layout">
                 <Link  to={`/product`}>Back to collection</Link>
@@ -67,7 +75,7 @@ export class _ProductDetails extends Component {
                     {/* <i onClick={this.onDeleteProduct} className="far fa-trash-alt"></i> */}
                     {/* </div> */}
                     <div className="product-imges">
-                        <img width="500" height="500" src={details.imgs.img1} alt="img"></img>
+                        <img width="500" height="500" src={imgs.img1} alt="img"></img>
                     </div>
                     <div className="product-info">
                         <h2>{name}</h2>
@@ -88,7 +96,7 @@ export class _ProductDetails extends Component {
                             {colors}
                         </select>
                        
-                        <button onClick={this.OnAddToCart}>Add To Cart</button>
+                        <button onClick={this.onAddToOrder}>Add To Cart</button>
                         </div>
                     </div>
                     {/* <div className="flex justify-end">
@@ -103,12 +111,13 @@ export class _ProductDetails extends Component {
 // gets the global state and puts it in the props of the component
 function mapStateProps(state) {
     return {
-        cartProducts: state.ProductReducer.cartProducts
+        orderProducts: state.OrderReducer.orderProducts
     }
 }
 // Takes the action dispatchers from the actions file and puts them inside the component's props
 const mapDispatchToProps = {
-    addToCart
+    addToOrder,
+    loadOrder
 }
 // Connect is used to tap into the store, without it we have no access to the store from the component
 export const ProductDetails = connect(mapStateProps, mapDispatchToProps)(_ProductDetails)

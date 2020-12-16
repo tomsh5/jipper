@@ -15,6 +15,7 @@ class _ProductPage extends Component {
     componentDidMount() {
        this.props.loadProducts()
        this.props.setFilter()
+       console.log(this.props.products);
 
     }
 
@@ -27,11 +28,11 @@ class _ProductPage extends Component {
     render() {
         const {products} = this.props
         if (!products) return <div>Loading....</div>
-
+        console.log(this.props.products);
         return (
             <div className="main-layout">
                 <ProductFilter onChangeFilter={ this.onChangeFilter } />
-               <ProductList products={products}/>
+               <ProductList listMode="customerMode" products={products}/>
             </div>
         )
     }

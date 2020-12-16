@@ -3,6 +3,7 @@ import { productService } from "../services/productService"
 const _setProducts = (products) => ({ type: 'SET_PRODUCTS', products })
 const _removeProduct = (id) => ({ type: 'REMOVE_PRODUCT', id })
 
+
 // Action Dispatcher 
 export function loadProducts() {
     return async (dispatch, getState) => {
@@ -14,13 +15,6 @@ export function loadProducts() {
     }
 }
 
-export function loadCartProducts(){
-    return async (getState) => {
-    const cartProducts = await getState().ProductReducer.cartProducts
-    console.log(cartProducts);
-    return cartProducts
-    }
-}
 
 export function removeProduct(id) {
     return dispatch => {

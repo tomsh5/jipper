@@ -1,7 +1,6 @@
 const INITIAL_STATE = {
     products: null,
     filterBy: null,
-    cartProducts: null
 }
 
 export function ProductReducer(state = INITIAL_STATE, action) {
